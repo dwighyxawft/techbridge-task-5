@@ -1625,6 +1625,355 @@ html.page-roadmap { --scroll-offset: calc(var(--header-h) + 104px); }
   .site-nav a { padding: 8px 8px; font-size: 0.85rem; }
 }
 
+
+/* ==========================================================
+   TASK 5 ADDITIONS: Challenge Hub
+   Filters, challenge cards, details dialog, and a roomier
+   header nav now that there are five links.
+   (All layout is flexbox.)
+   ========================================================== */
+
+/* ---------- Header nav: five links, so the short labels are always used ---------- */
+.site-nav .label-long { display: none; }
+.site-nav .label-short { display: inline; }
+.brand { flex: none; }              /* the logo never gets squeezed by the nav */
+@media (max-width: 640px) {
+  /* five short links wrap onto two centred rows instead of being cut off */
+  .site-nav { overflow-x: visible; }
+  .site-nav ul { flex-wrap: wrap; justify-content: center; gap: 4px; }
+  .site-nav a { padding: 8px 12px; font-size: 0.9rem; }
+}
+@media (max-width: 400px) {
+  .site-nav a { padding: 7px 9px; font-size: 0.85rem; }
+}
+
+/* ---------- Filters ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 20px 28px;
+  padding: clamp(18px, 3vw, 28px);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(13, 0, 77, 0.06);
+}
+.filter-group { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.filter-search { flex: 1 1 240px; }
+.filter-label { font-size: 0.85rem; font-weight: 700; color: var(--muted); }
+
+/* Segmented buttons: one is pressed at a time in each group */
+.seg {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 5px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+}
+.seg-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.seg-btn:hover { background: rgba(13, 0, 77, 0.07); }
+.seg-btn[aria-pressed="true"] { background: var(--navy); color: var(--white); }
+.seg-btn[aria-pressed="true"] .icon { color: var(--green); }
+.seg-btn .icon { width: 1.1em; height: 1.1em; }
+
+.count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgba(13, 0, 77, 0.08);
+  font-size: 0.8rem;
+}
+.count:empty { display: none; }
+.seg-btn[aria-pressed="true"] .count { background: rgba(255, 255, 255, 0.2); }
+
+.search-box { position: relative; display: flex; align-items: center; }
+.search-box .icon {
+  position: absolute;
+  left: 16px;
+  color: var(--muted);
+  pointer-events: none;
+}
+.search-box input {
+  width: 100%;
+  padding: 13px 18px 13px 46px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--soft);
+  font: inherit;
+  color: var(--ink);
+}
+.search-box input::placeholder { color: #7c7a94; }
+.search-box input:focus { background: var(--white); border-color: var(--navy); }
+
+/* ---------- Results bar ---------- */
+.results-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 26px 0 20px;
+}
+.result-count { font-weight: 700; color: var(--navy); }
+.reset-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 2px solid var(--navy);
+  border-radius: 999px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--navy);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.reset-btn:hover:not(:disabled) { background: var(--navy); color: var(--white); }
+.reset-btn:disabled { border-color: var(--line); color: #8d8ba3; cursor: not-allowed; }
+
+/* ---------- Challenge cards ---------- */
+.challenge-grid {
+  --gap: clamp(16px, 2.4vw, 24px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+}
+.challenge {
+  flex: 0 0 calc((100% - 2 * var(--gap)) / 3);   /* 3 per row */
+  min-width: 0;
+  display: flex;
+}
+.is-animated .challenge { animation: rise 0.45s calc(var(--i, 0) * 60ms) ease-out both; }
+
+.challenge-card {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--navy);      /* Web Development: navy edge */
+  border-radius: var(--radius);
+  transition: box-shadow 0.2s;
+}
+.challenge[data-track="data"] .challenge-card { border-top-color: var(--green); }   /* Data Analytics: green edge */
+.challenge-card:hover { box-shadow: 0 14px 32px rgba(13, 0, 77, 0.12); }
+
+.challenge-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.track-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.track-badge .icon { width: 1.1em; height: 1.1em; }
+.track-data { background: rgba(57, 184, 10, 0.16); color: #1f6b05; }
+.track-web { background: var(--navy); color: var(--white); }
+.track-web .icon { color: var(--green); }
+
+.difficulty {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.challenge-card h3 { font-size: 1.3rem; }
+.challenge-summary { color: var(--muted); }
+.challenge-outcome {
+  padding: 14px 16px;
+  background: var(--soft);
+  border-radius: 14px;
+  font-size: 0.95rem;
+}
+.outcome-label { margin-bottom: 4px; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+
+.challenge-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: auto;               /* pushes the footer to the bottom so cards line up */
+  padding-top: 6px;
+}
+.time-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.no-results {
+  padding: 48px 24px;
+  text-align: center;
+  background: var(--white);
+  border: 2px dashed #c9cddd;
+  border-radius: var(--radius-lg);
+}
+.no-results h3 { margin-bottom: 8px; font-size: 1.4rem; }
+.no-results p { margin-bottom: 22px; color: var(--muted); }
+
+/* ---------- Details dialog ---------- */
+html.modal-open { overflow: hidden; }
+
+.dialog {
+  width: min(760px, calc(100% - 32px));
+  max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 0 30px 80px rgba(13, 0, 77, 0.35);
+  overflow: hidden;
+}
+.dialog[open] { display: flex; animation: dialog-in 0.25s ease-out; }
+.dialog::backdrop {
+  background: rgba(13, 0, 77, 0.55);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+@keyframes dialog-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+.dialog-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+}
+.dialog-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: clamp(24px, 4vw, 40px);
+}
+.dialog-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--soft);
+  color: var(--navy);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.dialog-close:hover { background: var(--green); }
+.dialog-foot {
+  flex: none;
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px clamp(24px, 4vw, 40px);
+  background: var(--soft);
+  border-top: 1px solid var(--line);
+}
+
+.dialog-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-right: 48px;           /* keeps clear of the close button */
+}
+.dialog h2 { font-size: clamp(1.6rem, 3.6vw, 2.2rem); }
+.dialog-lead { margin-top: 10px; font-size: 1.08rem; color: var(--muted); }
+.dialog-h { margin: 28px 0 10px; font-size: 1.05rem; }
+
+.dialog-columns { display: flex; flex-wrap: wrap; gap: 0 32px; }
+.dialog-columns > div { flex: 1 1 260px; min-width: 0; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(13, 0, 77, 0.07);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.dialog .fit-list { margin-bottom: 0; }
+
+.dialog-facts { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+.dialog-fact {
+  flex: 1 1 240px;
+  padding: 16px 18px;
+  background: rgba(57, 184, 10, 0.12);
+  border-radius: 14px;
+}
+.dialog-fact .outcome-label { color: #1f6b05; }
+
+/* ---------- Responsive (Task 5) ---------- */
+@media (max-width: 960px) {
+  .challenge { flex-basis: calc((100% - var(--gap)) / 2); }   /* 2 per row */
+}
+
+@media (max-width: 640px) {
+  .challenge { flex-basis: 100%; }                            /* 1 per row */
+
+  .filters { gap: 16px; }
+  .filter-group { flex: 1 1 100%; }
+  .seg { width: 100%; }
+  .seg-btn { flex: 1 1 auto; justify-content: center; padding: 10px 12px; font-size: 0.9rem; }
+
+  .challenge-card { padding: 20px; }
+  .challenge-foot .btn { width: 100%; }
+  .time-chip { width: 100%; }
+
+  .dialog { width: calc(100% - 20px); max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); }
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -1634,5 +1983,7 @@ html.page-roadmap { --scroll-offset: calc(var(--header-h) + 104px); }
   .pin,
   .track-scale::before { animation: none; }
   .roadmap-dynamic .stop { animation: none; }
+  .is-animated .challenge,
+  .dialog[open] { animation: none; }
   * { transition: none !important; }
 }

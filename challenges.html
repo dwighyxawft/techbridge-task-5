@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Challenge Hub | TechBridge</title>
+  <meta name="description" content="Explore practical Data Analytics and Web Development challenges from TechBridge. Filter by track or difficulty and open any challenge to see what you would build.">
+  <meta name="theme-color" content="#0D004D">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Icon sprite (inline so there are no extra files to load) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5A8.5 8.5 0 1 1 21 11.5Z"/></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M8 16v-4"/><path d="M13 16V8"/><path d="M18 16v-7"/></symbol>
+      <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+      <symbol id="i-reset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.1c.5-1 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6V21h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4V9.5Z"/></symbol>
+      <symbol id="i-facebook" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.6V13h2.8v8h3.1Z"/></symbol>
+      <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Cohort notice -->
+  <div class="notice" role="status">
+    <p><span class="notice-dot" aria-hidden="true"></span>The current cohort is in progress. Applications for the next cohort are not open yet.</p>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="TechBridge home">
+        <img src="images/techbridge-logo.png" alt="TechBridge" width="546" height="103">
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="tasks.html"><span class="label-long">Internship Tasks</span><span class="label-short">Tasks</span></a></li>
+          <li><a href="roadmap.html"><span class="label-long">Internship Roadmap</span><span class="label-short">Roadmap</span></a></li>
+          <li><a href="challenges.html" aria-current="page"><span class="label-long">Challenge Hub</span><span class="label-short">Challenges</span></a></li>
+        </ul>
+      </nav>
+      <div class="header-side">
+        <a class="btn btn-primary btn-sm" href="https://chat.whatsapp.com/FqpBvYS4oaK32cXDxc8JIS" target="_blank" rel="noopener noreferrer">
+          <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+          <span class="label-long">Join the Community</span>
+          <span class="label-short">Join</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero page-hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li aria-current="page">Challenge Hub</li>
+            </ul>
+          </nav>
+          <h1>TechBridge <span class="mark">Challenge Hub</span></h1>
+          <p class="hero-lead">Explore practical challenges designed to help TechBridge interns apply their skills and gain real-world experience. Browse the Data Analytics and Web Development tracks, filter by difficulty, and open any challenge to see exactly what you would build.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#hub">
+              Browse challenges
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </a>
+            <a class="btn btn-outline" href="roadmap.html">See the internship roadmap</a>
+          </div>
+        </div>
+
+        <ol class="stats how-it-works" aria-label="How the Challenge Hub works">
+          <li class="stat"><span class="stat-num">1</span><span class="stat-label">Choose a track: Data Analytics or Web Development</span></li>
+          <li class="stat"><span class="stat-num">2</span><span class="stat-label">Pick a difficulty, from Beginner to Advanced</span></li>
+          <li class="stat"><span class="stat-num">3</span><span class="stat-label">Open a challenge to see the objective, skills and what to produce</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- The hub -->
+    <section class="section section-soft" id="hub">
+      <div class="container">
+
+        <noscript>
+          <p class="noscript-note">The Challenge Hub needs JavaScript to show and filter challenges. Please turn JavaScript on, or visit the <a href="programs.html">Programs</a> page to learn about the two tracks.</p>
+        </noscript>
+
+        <!-- Filters -->
+        <div class="filters" role="region" aria-label="Filter challenges">
+          <div class="filter-group">
+            <p class="filter-label" id="label-track">Track</p>
+            <div class="seg" role="group" aria-labelledby="label-track">
+              <button type="button" class="seg-btn" data-filter="track" data-value="all" aria-pressed="true">All <span class="count"></span></button>
+              <button type="button" class="seg-btn" data-filter="track" data-value="data" aria-pressed="false">
+                <svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg>Data Analytics <span class="count"></span>
+              </button>
+              <button type="button" class="seg-btn" data-filter="track" data-value="web" aria-pressed="false">
+                <svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Web Development <span class="count"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <p class="filter-label" id="label-difficulty">Difficulty</p>
+            <div class="seg" role="group" aria-labelledby="label-difficulty">
+              <button type="button" class="seg-btn" data-filter="difficulty" data-value="all" aria-pressed="true">All <span class="count"></span></button>
+              <button type="button" class="seg-btn" data-filter="difficulty" data-value="Beginner" aria-pressed="false">Beginner <span class="count"></span></button>
+              <button type="button" class="seg-btn" data-filter="difficulty" data-value="Intermediate" aria-pressed="false">Intermediate <span class="count"></span></button>
+              <button type="button" class="seg-btn" data-filter="difficulty" data-value="Advanced" aria-pressed="false">Advanced <span class="count"></span></button>
+            </div>
+          </div>
+
+          <div class="filter-group filter-search">
+            <label class="filter-label" for="search">Search</label>
+            <div class="search-box">
+              <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+              <input type="search" id="search" name="search" placeholder="Search by name or skill" autocomplete="off">
+            </div>
+          </div>
+        </div>
+
+        <div class="results-bar">
+          <p id="result-count" class="result-count" role="status" aria-live="polite"></p>
+          <button type="button" class="reset-btn" id="reset-filters" data-reset disabled>
+            <svg class="icon" aria-hidden="true"><use href="#i-reset"/></svg>
+            Reset filters
+          </button>
+        </div>
+
+        <!-- Challenge cards are drawn by challenges.js -->
+        <ul class="challenge-grid" id="challenge-grid"></ul>
+
+        <div class="no-results" id="no-results" hidden>
+          <h3>No challenges match your filters</h3>
+          <p>Try a different track or difficulty, or clear your search.</p>
+          <button type="button" class="btn btn-primary" data-reset>
+            <svg class="icon" aria-hidden="true"><use href="#i-reset"/></svg>
+            Reset filters
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Next step -->
+    <section class="section" id="next-step">
+      <div class="container">
+        <div class="community-banner">
+          <div class="community-copy">
+            <h2>Want to take on challenges like these?</h2>
+            <p>The TechBridge 30-Day Practical Internship is built around practical, hands-on work. Applications for the next cohort are not open yet, so join the community to stay connected.</p>
+          </div>
+          <div class="banner-actions">
+            <a class="btn btn-primary btn-lg" href="https://chat.whatsapp.com/FqpBvYS4oaK32cXDxc8JIS" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+              Join WhatsApp Community
+            </a>
+            <a class="btn btn-outline-light btn-lg" href="programs.html">Explore Programs</a>
+          </div>
+        </div>
+
+        <p class="banner-more">
+          <a class="text-link" href="roadmap.html">See the 8 internship tasks
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Challenge details (opened by challenges.js) -->
+  <dialog class="dialog" id="challenge-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-inner">
+      <button type="button" class="dialog-close" data-close aria-label="Close challenge details">
+        <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
+      </button>
+      <div class="dialog-body" id="dialog-content"></div>
+      <div class="dialog-foot">
+        <button type="button" class="btn btn-outline" data-close>Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="images/techbridge-logo-light.png" alt="TechBridge" width="546" height="103">
+        <p class="footer-tagline">Bridging Learning to Real-World Experience</p>
+        <p class="footer-org">TechBridge by Baselink Services Limited</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Footer">
+        <h2>Quick links</h2>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="index.html#internship">Internship</a></li>
+          <li><a href="tasks.html">Internship Tasks</a></li>
+          <li><a href="roadmap.html">Internship Roadmap</a></li>
+          <li><a href="challenges.html">Challenge Hub</a></li>
+          <li><a href="index.html#community">Community</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:techbridgebaselink@gmail.com">techbridgebaselink@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/company/techbridge-services/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://www.facebook.com/p/Baselink-Services-100066771475783/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://www.instagram.com/techbridgeserves" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 TechBridge by Baselink Services Limited. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="challenges.js" defer></script>
+</body>
+</html>
